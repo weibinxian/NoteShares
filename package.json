@@ -1,0 +1,26 @@
+{
+  "name": "causenotes",
+  "version": "1.0.0",
+  "description": "Application that lets users share school notes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.6.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.41.0"
+  }
+}

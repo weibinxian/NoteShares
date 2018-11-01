@@ -1,0 +1,10 @@
+
+{
+    "development": {
+      "username": "noteUser",
+      "password": "noteUser",
+      "database": "noteshare_development",
+      "host": "localhost",
+      "dialect": "postgres"
+    }
+  }
