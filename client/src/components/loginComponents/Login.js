@@ -6,7 +6,7 @@ class Login extends Component{
         return(
             <div className="row justify-content-center">
              <div className="col-md-6 col-sm-12 col-xs-12">
-            <form name="login" action="/login" method="post" className="p-t-2">
+            <form name="login" action="/api/login" method="post" className="p-t-2">
                 <div className="form-group">
                     <label>Email Address</label>
                     <input name="email" className="form-control" id="email" type="email" placeholder="Enter email"></input>

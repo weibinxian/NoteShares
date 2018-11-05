@@ -10,7 +10,7 @@ class Home extends Component {
             <div className="home-page">  
                 <Link to="/login">Login</Link> 
                 <br/>
-                <Link to="/register">Register</Link>
+                <Link to="/signup">Register</Link>
                  <Jumbo /> 
                 <br/>
                 Home Page

@@ -7,6 +7,7 @@ import Home from './components/Home';
 import User from './components/userComponents/User';
 import Notes from './components/noteComponents/Notes';
 import Login from './components/loginComponents/Login';
+import SignUp from './components/singUpComponents/signup';
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path="/user" component={User} />
             <Route exact path="/notes" component={Notes}/>
             <Route exact path="/login" component={Login}/>
+            <Route extact path="/signup" component={SignUp}/>
           </Switch>
         </div>
 
