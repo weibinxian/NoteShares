@@ -11,6 +11,7 @@ const app = express();
 //bodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
 //other middleware init
 app.use(passport.initialize());
 app.use(passport.session());

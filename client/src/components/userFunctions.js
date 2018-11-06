@@ -11,6 +11,7 @@ export const register = newUser => {
          passw : newUser.password
     })
     .then( res => {
+        res.json({'test': 'account created'});
         console.log('Account Created')
     });
 }
