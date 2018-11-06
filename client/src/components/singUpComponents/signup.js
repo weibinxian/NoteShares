@@ -61,7 +61,7 @@ class SignUp extends Component {
 
                 //it is not setting the set for the redirect
                 this.setState({ callBackResponce : !this.state.callBackResponce });
-                console.log(res);
+                console.log("Registered inside register: " + res);
             }
         });
         console.log('Sending post request ');

@@ -9,10 +9,10 @@ export const register = newUser => {
          school : newUser.school,
          email : newUser.email,
          passw : newUser.password
-    })
-    .then( res => {
-        res.json({'test': 'account created'});
-        console.log('Account Created')
     });
+    // .then( res => {
+    //     //res.json({'test': 'account created'});
+    //     console.log('Account Created')
+    // });
 }
 
