@@ -62,6 +62,6 @@ module.exports = (sequelize, DataTypes) => {
     //         user.password = hashedPassword;
     //     })
     // );
-
+   
     return User;
 };

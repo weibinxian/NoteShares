@@ -8,7 +8,7 @@ export const register = newUser => {
          username : newUser.username,
          school : newUser.school,
          email : newUser.email,
-         passw : newUser.password
+         passw : newUser.passw,
     });
     // .then( res => {
     //     //res.json({'test': 'account created'});
