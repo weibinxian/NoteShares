@@ -6,7 +6,7 @@ const Note = require('../../models').note;
 const User = require('../../models/user');
 
 //@route    GET api/notes
-//@desc     Get all notes from database
+//@desc     Get all comments from database
 router.get('/', (req,res)=> {
     Note.findById(1).then(Note =>{
         res.json(Note);
@@ -14,7 +14,7 @@ router.get('/', (req,res)=> {
 });
 
 //@route    POST api/notes
-//@desc     Post a note to database
+//@desc     Post a comment
 router.post('/newpost',(req,res)=> {
   
     const title = req.body.title;

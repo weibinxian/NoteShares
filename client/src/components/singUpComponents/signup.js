@@ -119,7 +119,8 @@ class SignUp extends Component {
                            type="text"
                            onChange = { (e) => this.onChange(e)}
                            ></input>
-    
+                          
+
                     <label>Enter CUNY email</label>
                     <input name="email" 
                            className="form-control" 
