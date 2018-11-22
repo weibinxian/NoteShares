@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt-nodejs');
-
 /*
 NOT FINAL TABLE FOR Note
 

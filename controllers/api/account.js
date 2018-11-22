@@ -4,7 +4,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt-nodejs');
 const models = require('../../models');
 
-const User = require('../../models').user;
+//const User = require('../../models').user;
 
 /*
     Validation needs to be implemented 
@@ -70,7 +70,6 @@ router.post('/signup', (req,res) => {
                             res.json(user);
                         })
                         .catch(error => {
-                            console.log('in this hoe')
                             res.status(400).send(error)
                         });
                     });
@@ -80,8 +79,8 @@ router.post('/signup', (req,res) => {
                 }
             })
             .catch(err => {
-                //error looking for email
-                console.log('error in findOne {email}')
+                //error looking for username
+                console.log('error in findOne {username}')
                 console.log(err)
                 res.send('error: ' + err)
             })

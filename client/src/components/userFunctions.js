@@ -10,11 +10,8 @@ export const register = newUser => {
          email : newUser.email,
          passw : newUser.passw,
     });
-    // .then( res => {
-    //     //res.json({'test': 'account created'});
-    //     console.log('Account Created')
-    // });
 }
+
 /*
     Post reqest to api, for create new post 
 */
@@ -27,6 +24,7 @@ export const createnewnote = newNote => {
     });
 
 }
+
 /*
     Post reqest to api, to login in and user authentication 
 */

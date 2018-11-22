@@ -1,7 +1,6 @@
-const bcrypt = require('bcrypt-nodejs');
 
 /*
-NOT FINAL TABLE FOR Note
+NOT FINAL TABLE FOR comment
 
 */ 
 module.exports = (sequelize, DataTypes) => {
@@ -20,11 +19,6 @@ module.exports = (sequelize, DataTypes) => {
             notEmpty: true,
             },
         },
-        /*
-        image:{
-
-        }
-        */
        text: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -39,5 +33,5 @@ module.exports = (sequelize, DataTypes) => {
         models.Comment.belongsTo(models.Note
         );
       }
-    return Note;
+    return Comment1;
 };
