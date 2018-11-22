@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt-nodejs')
-
+const models = require('../../models');
 const Note = require('../../models').note;
 
 //@route    GET api/notes
@@ -21,9 +21,9 @@ router.post('/newpost',(req,res)=> {
     const text = req.body.text;
     console.log(req.body);
 
-    Note.findOne({ where: {title : title} })
+    models.Note.findOne({ where: {title : title} })
     .then(note => {
-                Note.create({
+                models.Note.create({
                     title: title,
                     body: body,
                     text: text

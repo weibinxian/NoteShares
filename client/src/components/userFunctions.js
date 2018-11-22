@@ -16,3 +16,13 @@ export const register = newUser => {
     // });
 }
 
+/*
+    Post reqest to api, to login in and user authentication 
+*/
+export const loginAccount = User => {
+    return axios
+    .post('api/account/signin', {
+        email: User.email,
+        password: User.password,
+    });
+}

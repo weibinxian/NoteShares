@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt-nodejs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const models = require('../models');
 
 const User = require('../models').user;
 
@@ -12,11 +13,11 @@ passport.use(new LocalStrategy({
     usernameField: 'email',
   },
   (email, password, done) => {
-    User.findOne({
+    models.User.findOne({
       where: { email },
     }).then((user) => {
       if(!user) {
-        return done(null, false, { message: 'Incorrect email.' });
+        return done(null, false);
       }
       console.log(password, user.password);
       if (passwordsMatch(password, user.password) === false) {
@@ -27,7 +28,7 @@ passport.use(new LocalStrategy({
       }
 
 
-      return done(null, user, { message: 'Successfully Logged In!' });
+      return done(null, user);
     }).catch(err=>{
       console.log(err);
     });
@@ -39,7 +40,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then((user) => {
+  models.User.findById(id).then((user) => {
     if (!user) {
       return done(null, false);
     }

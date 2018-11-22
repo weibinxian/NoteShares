@@ -62,6 +62,9 @@ module.exports = (sequelize, DataTypes) => {
     //         user.password = hashedPassword;
     //     })
     // );
-   
+    
+    User.associate = (models) => {
+        models.User.hasMany(models.Note);
+      }
     return User;
 };
