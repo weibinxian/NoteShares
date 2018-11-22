@@ -31,9 +31,13 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
             notEmpty: true,
         },
+        
     },
     });
 
-
+    Note.associate = (models) => {
+        models.Note.belongsTo(models.User
+        );
+      }
     return Note;
 };

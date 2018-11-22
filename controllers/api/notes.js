@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt-nodejs')
 const models = require('../../models');
 const Note = require('../../models').note;
+const User = require('../../models/user');
 
 //@route    GET api/notes
 //@desc     Get all notes from database
@@ -19,11 +20,14 @@ router.post('/newpost',(req,res)=> {
     const title = req.body.title;
     const body = req.body.body;
     const text = req.body.text;
+    
+    // console.log(req.user);
     console.log(req.body);
 
     models.Note.findOne({ where: {title : title} })
     .then(note => {
                 models.Note.create({
+                    userId : req.user.id,
                     title: title,
                     body: body,
                     text: text

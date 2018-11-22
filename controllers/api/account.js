@@ -20,6 +20,7 @@ router.get('/error', (req, res) => {
 router.post('/signin',
   passport.authenticate('local', { failureRedirect: '/api/account/error' }),
   (req, res) => {
+        console.log(req.user.id);
     res.json({
       id: req.user.id,
       firstName: req.user.firstName,

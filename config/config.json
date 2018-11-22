@@ -3,7 +3,7 @@
     "development": {
       "username": "noteUser",
       "password": "noteUser",
-      "database": "noteshares1_development",
+      "database": "noteshare_development",
       "host": "localhost",
       "dialect": "postgres"
     }
