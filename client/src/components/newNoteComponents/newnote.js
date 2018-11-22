@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-import { createnewnote } from '../notesFunctions';
+import { createnewnote } from '../userFunctions';
 
 
 

@@ -15,7 +15,18 @@ export const register = newUser => {
     //     console.log('Account Created')
     // });
 }
+/*
+    Post reqest to api, for create new post 
+*/
+export const createnewnote = newNote => {
+    return axios
+    .post('api/notes/newpost', {
+          title: newNote.title,
+         body : newNote.body,
+         text : newNote.text
+    });
 
+}
 /*
     Post reqest to api, to login in and user authentication 
 */
