@@ -23,20 +23,31 @@ router.post('/newpost',(req,res)=> {
     // console.log(req.user);
     console.log(req.body);
 
+    /*
+    Note need a unique title to be created 
+        -is there another way we can have similar titles?
+    */
     models.Note.findOne({ where: {title : title} })
-    .then(note => {
-                models.Note.create({
-                    userId : req.user.id,
-                    title: title,
-                    body: body,
-                    text: text
-                })
-                .then(note => {
-                    console.log(note);
-                    res.json(note);
-                }).catch(error => res.status(400).send(error));
-               
-        
+    .then(noteTitle => {
+        if(!noteTitle){
+            //create a new note
+            models.Note.create({
+                userId : req.user.id,
+                title: title,
+                body: body,
+                text: text
+            })
+            .then(note => {
+                console.log(note);
+                res.json(note);
+            }).catch(error => {
+                res.status(400).send(error)
+            });
+           
+        } else {
+            res.json({error: 'Pick a new title'})
+            console.log('The note does not have a unique title')
+        }
     });
     
     
