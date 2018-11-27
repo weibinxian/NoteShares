@@ -3,6 +3,8 @@ import { Redirect } from 'react-router';
 import { createnewnote } from '../userFunctions';
 
 
+//image component 
+import Images from '../imageComponents/images';
 
 
 /*
@@ -10,10 +12,14 @@ This is the new note test, bascilly just post the new notes.
 
 */
 class NewNote extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
+            upload: {
+                imagesCB: false,
+                imagesURL: [],
+            } ,
             errors: {},
             callBackResponce: false,
             client: {
@@ -22,6 +28,11 @@ class NewNote extends Component {
                text:''
             }
          };
+    }
+
+    //callback function to pass down to images component 
+    imageCallback = (dataFromChild) => {
+        this.setState({ upload: dataFromChild})
     }
 
     
@@ -98,7 +109,8 @@ class NewNote extends Component {
                            onChange = { (e) => this.onChange(e)}
                            required
                           ></textarea>
-    
+                    
+                    <Images callbackFromParent={this.imageCallback}/>
                     
                 </div>
                     <button type="submit" className="btn btn-primary">Create Note</button>

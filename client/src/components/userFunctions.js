@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+/*
+    Post reqest to api, to register a new user  
+*/
 export const register = newUser => {
     return axios
     .post('api/account/signup', {
