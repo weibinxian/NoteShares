@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt-nodejs');
+//const bcrypt = require('bcrypt-nodejs');
 
 /*
 NOT FINAL TABLE FOR USER

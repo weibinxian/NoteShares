@@ -10,6 +10,8 @@ import Login from './components/loginComponents/Login';
 import SignUp from './components/singUpComponents/signup';
 import NewNotes from './components/newNoteComponents/newnote';
 
+import images from './components/imageComponents/images'
+
 
 class App extends Component {
   render() {
@@ -24,6 +26,9 @@ class App extends Component {
             <Route exact path="/login" component={Login}/>
             <Route extact path="/signup" component={SignUp}/>
             <Route exact path="/newpost" component={NewNotes} />
+
+            
+            <Route exact path="/image" component={images} />
           </Switch>
         </div>
 

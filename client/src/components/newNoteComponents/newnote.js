@@ -3,6 +3,8 @@ import { Redirect } from 'react-router';
 import { createnewnote } from '../userFunctions';
 
 
+//image component 
+import Images from '../imageComponents/images';
 
 
 /*
@@ -10,10 +12,14 @@ This is the new note test, bascilly just post the new notes.
 
 */
 class NewNote extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
+            upload: {
+                imagesCB: false,
+                imagesURL: [],
+            } ,
             errors: {},
             callBackResponce: false,
             client: {
@@ -22,8 +28,11 @@ class NewNote extends Component {
                text:''
             }
          };
+    }
 
-
+    //callback function to pass down to images component 
+    imageCallback = (dataFromChild) => {
+        this.setState({ upload: dataFromChild})
     }
 
     
@@ -50,7 +59,6 @@ class NewNote extends Component {
         .then(res => {
             if(res){
 
-                //it is not setting the set for the redirect
                 this.setState({ callBackResponce : !this.state.callBackResponce });
                 console.log("Registered inside register: " + res);
             }
@@ -63,8 +71,8 @@ class NewNote extends Component {
     render () {
         const { callBackResponce } = this.state;
 
-        //if the account was created with success
-        //redirect to a new path 
+        //if the new note was created with success
+        //redirect to a new path to view the note
         if(callBackResponce) {
             return <Redirect to="/notes" />;
 
@@ -80,7 +88,8 @@ class NewNote extends Component {
                            className="form-control" 
                            id="title" 
                            type="text"
-                           onChange = { (e) => this.onChange(e)}
+                           onChange = { (e) => this.onChange(e) }
+                           required
                            ></input>
     
                     <label>Body</label>
@@ -89,6 +98,7 @@ class NewNote extends Component {
                            id="body" 
                            type="text"
                            onChange = { (e) => this.onChange(e)}
+                           required
                            ></textarea>
     
                     <label>text</label>
@@ -97,8 +107,10 @@ class NewNote extends Component {
                            id="text" 
                            type="txt"
                            onChange = { (e) => this.onChange(e)}
+                           required
                           ></textarea>
-    
+                    
+                    <Images callbackFromParent={this.imageCallback}/>
                     
                 </div>
                     <button type="submit" className="btn btn-primary">Create Note</button>
