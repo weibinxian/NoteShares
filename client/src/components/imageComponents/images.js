@@ -3,7 +3,14 @@ import axios from 'axios'
 import Dropzone from 'react-dropzone'
 
 
+// axios post call to API
+const {imagesCall} = require('../userFunctions')
 
+
+/*
+    We can store the id of each id,
+    Inside the Parent Component we can have a button to reset the images
+*/
 class Images extends Component{
     constructor() {
         super()
@@ -26,23 +33,26 @@ class Images extends Component{
           formData.append("api_key", "837478342353245"); // Replace API key with your own Cloudinary key
           formData.append("timestamp", (Date.now() / 1000) | 0);
           
-          // Make an AJAX upload request using Axios (replace Cloudinary URL below with your own)
-          return axios.post("https://api.cloudinary.com/v1_1/sronikle/image/upload", formData, {
-            headers: { "X-Requested-With": "XMLHttpRequest" },
-          }).then(response => {
-            let urlArray = this.state.imageURL.concat(response.data.secure_url)
-            this.setState({ imageURL: urlArray})
+          //submit each image to Cloudinary cloud
+          return imagesCall(formData)
+          .then(response => {
+              //add the URL to the state a
+              //we can also store IDs 
+              let urlArray = this.state.imageURL.concat(response.data.secure_url)
+              this.setState({ imageURL: urlArray})
           })
           .catch(err => {
+              //error posting image to server 
               console.log(err)
           })
         });
       
-        // Once all the files are uploaded 
+        //Once all the files are uploaded from axios 
+        //callback to parent component with state
         axios.all(uploaders).then(() => {
             this.setState({ imageCB: true})
-            const test = this.state;
-            this.props.callbackFromParent(test)
+            const state = this.state;
+            this.props.callbackFromParent(state)
         });
       }
 

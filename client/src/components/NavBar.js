@@ -1,5 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+//import log out button
+import LogOut from './loginComponents/Logout'
 
 const NavBar = () => {
     return (
@@ -11,6 +14,7 @@ const NavBar = () => {
                 <Link to="/"> Home</Link>
                 <Link to="/user"> User</Link>
                 <Link to="/notes"> Notes</Link>
+                <LogOut />
             </div>
         </nav> 
 

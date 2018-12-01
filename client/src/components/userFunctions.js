@@ -38,3 +38,12 @@ export const loginAccount = User => {
         password: User.password,
     });
 }
+
+/*
+    Post request to Cloudinary  
+*/
+export const imagesCall = formData => {
+    return axios.post("https://api.cloudinary.com/v1_1/sronikle/image/upload", formData, {
+        headers: { "X-Requested-With": "XMLHttpRequest" },
+      })
+}

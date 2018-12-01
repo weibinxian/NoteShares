@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router';
-// import { loginAccount } from '../userFunctions';
 
 
 const Auth = require('../../utilities/auth')
@@ -39,32 +38,29 @@ class Login extends Component{
 
     onSubmit(e) {
         e.preventDefault();
-
+        
+        //Authenticate the user
         Auth.authenticate(this.state.User.email, this.state.User.password, () => {
-                if(Auth.hasLoginError){
+                //cb 
+                if(Auth.getlocal('hasLoginError') === 'true'){
                     //there was a 401 error, not authorized 
                     this.setState({ error: 'Incorrect password or email'})
                 }else {
                     //there was no login errors
-                    console.log(localStorage)
+                    //route to user page 
                     this.setState({ callBackResponce : !this.state.callBackResponce });
-                    console.log('logged in');
-                    console.log(Auth.loggedUser)
                 }
         });
-        
-    
     }
 
 
     render() {
         const { callBackResponce } = this.state;
         const { error } = this.state;
-        
+       
         //if the user was able to sign in 
         //redirect to user landing page
         if(callBackResponce) {
-
             return <Redirect to="/user" />;
         } else {
             return(

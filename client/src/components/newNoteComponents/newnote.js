@@ -7,7 +7,6 @@ import Images from '../imageComponents/images';
 
 
 
-
 /*
 This is the new note test, bascilly just post the new notes.
 
@@ -37,6 +36,7 @@ class NewNote extends Component {
     }
 
     test = () => {
+        console.log('--------')
         console.log(localStorage)
     }
     

@@ -1,44 +1,49 @@
 const {loginAccount} = require('../components/userFunctions')
 
 module.exports = {
-
-    isAuthenticated: false,
-    hasLoginError: false,
-    loggedUser: {
-        id: '',
-        firstName:'',
-        lastName:'',
-        email: '',
+    /*
+        return the value of requested item from localStorage
+    */
+    getlocal(item){
+        return localStorage.getItem(item)
     },
-
+    /*
+        authentication and set localStorage with the logged user information
+    */
     authenticate(email,password,cb) {
+
         const user = {
             email: email,
             password: password,
         }
+
+        //post request to API
         loginAccount(user)
             .then(res => {
                 if(res.status === 200){
-                    this.hasLoginError = false;
-                    this.loggedUser = res.data;
-                    
+                    //set localStorage info
                     for ( let key in res.data ) {
                         localStorage.setItem(key, res.data[key])
                     }
-                    this.isAuthenticated = true;
+                    localStorage.setItem('isAuthenticated', 'true')
+                    localStorage.setItem('hasLoginError', 'false')
+                    //callback
                     cb();
                 }
             })
-            .catch(err => {
-                this.hasLoginError = true
+            .catch(err => { 
+                //there was a 401 status, the password/email are incorrect
+                localStorage.setItem('hasLoginError', 'true')
                 console.log(err)
+                //callback
                 cb();
             })
     },
-
-    signout(cb) {
+    /*
+        sign out and clear the localStorage
+    */
+    signout() {
         localStorage.clear();
-        this.isAuthenticated = false;
-        setTimeout(cb, 100);
+        console.log(localStorage)
     }
 }
