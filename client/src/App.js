@@ -10,7 +10,10 @@ import Login from './components/loginComponents/Login';
 import SignUp from './components/singUpComponents/signup';
 import NewNotes from './components/newNoteComponents/newnote';
 
-import images from './components/imageComponents/images'
+
+//private route 
+import {PrivateRoute} from './utilities/privateRoute'
+
 
 
 class App extends Component {
@@ -21,14 +24,11 @@ class App extends Component {
         <div className="Test">   
           <Switch >
             <Route exact path="/" component={Home} />
-            <Route exact path="/user" component={User} />
             <Route exact path="/notes" component={Notes}/>
             <Route exact path="/login" component={Login}/>
             <Route extact path="/signup" component={SignUp}/>
-            <Route exact path="/newpost" component={NewNotes} />
-
-            
-            <Route exact path="/image" component={images} />
+            <PrivateRoute exact path="/user" component={User} />
+            <PrivateRoute exact path="/newpost" component={NewNotes} />
           </Switch>
         </div>
 

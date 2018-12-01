@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router';
 import { createnewnote } from '../userFunctions';
 
-
 //image component 
 import Images from '../imageComponents/images';
+
 
 
 /*
@@ -35,6 +35,10 @@ class NewNote extends Component {
         this.setState({ upload: dataFromChild})
     }
 
+    test = () => {
+        console.log('--------')
+        console.log(localStorage)
+    }
     
     onChange(e) {
         const client = this.state.client;
@@ -47,10 +51,18 @@ class NewNote extends Component {
     onSubmit(e) {
         e.preventDefault();
 
+        
+        /*
+        if imagescb 
+            var = this.state.upload.imageURL
+        else 
+            var=[]
+        */
+
         const newNote = {
             title : this.state.client.title,
             body : this.state.client.body,
-            text : this.state.client.text
+            text : this.state.client.text,
         }
 
         console.log(newNote);
@@ -69,6 +81,9 @@ class NewNote extends Component {
 
 
     render () {
+
+        this.test()
+       
         const { callBackResponce } = this.state;
 
         //if the new note was created with success
