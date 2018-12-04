@@ -2,14 +2,40 @@ const express = require('express');
 const router = express.Router();
 
 const models = require('../../models');
-const Note = require('../../models').note;
 
-//@route    GET api/notes
-//@desc     Get all notes from database
-router.get('/', (req,res)=> {
-    Note.findById(1).then(Note =>{
-        res.json(Note);
+//@route    GET api/note if
+//@desc     Get the note from database by ID
+router.get('/note/:id', (req,res)=> {
+    models.Note.findById(req.params.id)
+    .then(Note => {
+        res.json(Note)
     })
+    .catch(err => {
+        res.json(err)
+    });
+});
+
+//@route    GET api/note if
+//@desc     Get the note from database by ID
+router.get('/keyword/', (req,res)=> {
+
+    console.log(req.query)
+    res.json('hi')
+
+});
+
+//@route    GET api/note if
+//@desc     Get the note from database by ID
+router.get('/all/:id', (req,res)=> {
+    console.log(req.params.id)
+    models.Note.findAll({ where: {userId: req.params.id}})
+    .then(Note => {
+        res.json(Note)
+        
+    })
+    .catch(err => {
+        res.json(err)
+    });
 });
 
 //@route    POST api/notes
@@ -19,6 +45,7 @@ router.post('/newpost',(req,res)=> {
     const title = req.body.title;
     const body = req.body.body;
     const text = req.body.text;
+    const image = req.body.image;
     
     // console.log(req.user);
     console.log(req.body);
@@ -35,7 +62,8 @@ router.post('/newpost',(req,res)=> {
                 userId : req.user.id,
                 title: title,
                 body: body,
-                text: text
+                text: text,
+                image: image
             })
             .then(note => {
                 console.log(note);
@@ -62,7 +90,6 @@ router.post('/edit/:id', (req,res)=> {
 //@route    Delete api/notes/:id
 //@desc     Post a note to database
 router.delete('/:id', (req,res)=> {
-    res.json({'test':'This a DELETE request'});
 });
 
 

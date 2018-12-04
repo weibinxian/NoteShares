@@ -6,7 +6,6 @@ import { createnewnote } from '../userFunctions';
 import Images from '../imageComponents/images';
 
 
-
 /*
 This is the new note test, bascilly just post the new notes.
 
@@ -17,8 +16,8 @@ class NewNote extends Component {
 
         this.state = {
             upload: {
-                imagesCB: false,
-                imagesURL: [],
+                imageCB: false,
+                imageURL: [],
             } ,
             errors: {},
             callBackResponce: false,
@@ -35,11 +34,6 @@ class NewNote extends Component {
         this.setState({ upload: dataFromChild})
     }
 
-    test = () => {
-        console.log('--------')
-        console.log(localStorage)
-    }
-    
     onChange(e) {
         const client = this.state.client;
         const field = e.target.name;
@@ -51,7 +45,7 @@ class NewNote extends Component {
     onSubmit(e) {
         e.preventDefault();
 
-        
+        console.log(this.state)
         /*
         if imagescb 
             var = this.state.upload.imageURL
@@ -59,10 +53,20 @@ class NewNote extends Component {
             var=[]
         */
 
+        const imagesCB = this.state.upload.imageCB;
+    
+        let images ; 
+        if(imagesCB) {
+             images = this.state.upload.imageURL
+        } else {
+             images = []
+        }
+    
         const newNote = {
             title : this.state.client.title,
             body : this.state.client.body,
             text : this.state.client.text,
+            image : images
         }
 
         console.log(newNote);
@@ -81,8 +85,6 @@ class NewNote extends Component {
 
 
     render () {
-
-        this.test()
        
         const { callBackResponce } = this.state;
 

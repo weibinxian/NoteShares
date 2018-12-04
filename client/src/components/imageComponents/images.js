@@ -22,11 +22,11 @@ class Images extends Component{
     }
 
     handleDrop = files => {
-        console.log(files)
+        //console.log(files)
         // Push all the axios request promise into a single array
         const uploaders = files.map(file => {
           // Initial FormData
-          console.log(file)
+          //console.log(file)
           const formData = new FormData();
           formData.append("file", file);
           formData.append("upload_preset", "db30ujvt"); // Replace the preset name with your own
@@ -53,6 +53,7 @@ class Images extends Component{
             this.setState({ imageCB: true})
             const state = this.state;
             this.props.callbackFromParent(state)
+            console.log('image upload cb')
         });
       }
 

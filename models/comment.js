@@ -1,4 +1,4 @@
-
+const Sequelize = require('sequelize')
 /*
 NOT FINAL TABLE FOR comment
 

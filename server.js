@@ -4,12 +4,15 @@ const expressSession = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('./middlewares/authentication');
 const models = require('./models');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
 
 //init app
 const app = express();
 
+//cors
+app.use(cors())
 //bodyParser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -26,7 +29,7 @@ app.use(passport.session());
 
 //api routes
 const Notes = require('./controllers/api/notes');
-const Users = require('./controllers/api/Users');
+const Users = require('./controllers/api/users');
 const Account = require('./controllers/api/account');
 app.use('/api/notes', Notes);
 app.use('/api/user', Users);
