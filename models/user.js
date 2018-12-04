@@ -52,17 +52,6 @@ module.exports = (sequelize, DataTypes) => {
         },
     });
 
-    // User.beforeCreate((user) => 
-    //     new sequelize.Promise((resolve) => {
-    //         bcrypt.hash(user.password, null, null, (err, hashedPassword) => {
-    //             resolve(hashedPassword);
-    //         });
-    //     })
-    //     .then((hashedPassword) => {
-    //         user.password = hashedPassword;
-    //     })
-    // );
-    
     User.associate = (models) => {
         models.User.hasMany(models.Note,
         );

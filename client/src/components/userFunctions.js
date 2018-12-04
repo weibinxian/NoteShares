@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 /*
+    USER FUNCTION
     Post reqest to api, to register a new user  
 */
 export const register = newUser => {
@@ -16,19 +17,7 @@ export const register = newUser => {
 }
 
 /*
-    Post reqest to api, for create new post 
-*/
-export const createnewnote = newNote => {
-    return axios
-    .post('api/notes/newpost', {
-          title: newNote.title,
-         body : newNote.body,
-         text : newNote.text
-    });
-
-}
-
-/*
+    USER FUNCTION
     Post reqest to api, to login in and user authentication 
 */
 export const loginAccount = User => {
@@ -38,8 +27,54 @@ export const loginAccount = User => {
         password: User.password,
     });
 }
+/*
+    USER FUNCTION
+    GET reqest to api, to get note id 
+*/
+export const getUserByID = _id => {
+    let URL = 'http://localhost:3001/api/user/' + _id
+    return axios
+    .get(URL);
+}
+
 
 /*
+    NOTE FUNCTION
+    Post reqest to api, for create new post 
+*/
+export const createnewnote = newNote => {
+    return axios
+    .post('api/notes/newpost', {
+          title: newNote.title,
+         body : newNote.body,
+         text : newNote.text,
+         image : newNote.image,
+    });
+}
+
+/*
+    NOTE FUNCTION
+    GET reqest to api, to get note id 
+*/
+export const getNoteByID = _id => {
+    let URL = 'http://localhost:3001/api/notes/note/' + _id
+    return axios
+    .get(URL);
+}
+
+/*
+    NOTE FUNCTION
+    GET reqest to api, to get note id 
+*/
+export const getAllNotes = _id => {
+    let URL = 'http://localhost:3001/api/notes/all/' + _id
+    return axios
+    .get(URL);
+}
+
+
+/*
+    IMAGE FUNCTION
     Post request to Cloudinary  
 */
 export const imagesCall = formData => {

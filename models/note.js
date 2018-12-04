@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize')
+
 /*
 NOT FINAL TABLE FOR Note
 
@@ -18,12 +20,11 @@ module.exports = (sequelize, DataTypes) => {
             notEmpty: true,
             },
         },
-        /*
         image:{
-
-        }
-        */
-       text: {
+            type: DataTypes.ARRAY(Sequelize.TEXT),
+            allowNull: true,
+        },
+        text: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {

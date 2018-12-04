@@ -1,11 +1,26 @@
 const express = require('express');
 const router = express.Router();
+const models = require('../../models');
 
 
 //@route    GET api/user
 //@desc     Get all user from database
-router.get('/', (req,res)=> {
-    res.json({'test':'This a GET request'});
+router.get('/:id', (req,res)=> {
+    models.User.findById(req.params.id)
+    .then(user => {
+        const userData = {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            id: user.id,
+            email: user.email,
+            username: user.username,
+            school: user.school,
+        }
+        res.json(userData)
+    })
+    .catch(err => {
+        res.json(err)
+    })
 });
 
 //@route    POST api/user
