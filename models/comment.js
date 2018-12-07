@@ -5,21 +5,8 @@ NOT FINAL TABLE FOR comment
 */ 
 module.exports = (sequelize, DataTypes) => {
     const Comment1 = sequelize.define('comment', {
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true,
-            },
-        },
-        body: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: true,
-            },
-        },
-       text: {
+        
+       body: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
