@@ -1,29 +1,78 @@
 import React, { Component } from 'react'
 
-
+import { getNoteByID,getAllNotes} from '../userFunctions'
 import Auth from '../../utilities/auth'
 
+function Display(props) {
+    
+return (
+    <div>
+        
+     
+     
+        
+        <h1>{props.title}</h1>
+        <h1>{props.body}</h1>
+        <h1>{props.text}</h1>
+        <h1>{props.id}</h1>
+
+    </div>
+)
+}
+
 class RenderNote extends Component {
-    construstor(props){
+    constructor(props) {
         super(props)
 
         this.state = {
-            note: {
-            }
+            notes: []
         }
     }
 
 
-    componentDidMount(){
+    async componentWillMount(){
+        
+        if(this.props.match) {
+            let _id = this.props.match.params.id
 
+            await getNoteByID(_id)
+            .then(note => {
+
+                console.log(note.data)
+                this.setState({
+                    notes:note.data
+                })
+            })
+        }  
     }
 
+    
     render(){
-        let _id = Auth.getlocal('id')
+       
+        let notelist=[];
+        let _username=Auth.getlocal('email')
+       
+        notelist.push(
+            this.state.notes.title,
+            this.state.notes.body,
+            this.state.notes.text,
+            
+        )
+            
+                console.log(notelist.image)
+            
+            
+        
         return (
-            <div>Show all notes by user {_id}</div>
+            <div>This notes created by email {_username}
+                <div>
+                    {notelist}
+                </div>
+            </div>
+            
         );
     }
+    
 }
 
 
