@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
-
-import { getNoteByID,getAllNotes} from '../userFunctions'
+import Comment from '../commentComponent/comments'
+import { getNoteByID,} from '../userFunctions'
 import Auth from '../../utilities/auth'
 
-function Display(props) {
-    
-return (
-    <div>
-        
-     
-     
-        
-        <h1>{props.title}</h1>
-        <h1>{props.body}</h1>
-        <h1>{props.text}</h1>
-        <h1>{props.id}</h1>
 
-    </div>
-)
-}
+// function Display(props) {
+    
+// return (
+//     <div>
+        
+     
+     
+        
+//         <h1>{props.title}</h1>
+//         <h1>{props.body}</h1>
+//         <h1>{props.text}</h1>
+//         <h1>{props.id}</h1>
+
+//     </div>
+// )
+// }
 
 class RenderNote extends Component {
     constructor(props) {
@@ -67,6 +68,10 @@ class RenderNote extends Component {
             <div>This notes created by email {_username}
                 <div>
                     {notelist}
+                </div>
+
+                <div>
+                    <Comment />
                 </div>
             </div>
             
