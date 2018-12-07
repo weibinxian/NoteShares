@@ -10,6 +10,7 @@ import Login from './components/loginComponents/Login';
 import SignUp from './components/singUpComponents/signup';
 import NewNotes from './components/newNoteComponents/newnote';
 import ViewNote from './components/noteComponents/ViewNotes';
+import RenderNote from './components/noteComponents/RenderNote';
 import SearchBar from './components/seachComponent/SearchBar'
 //private route 
 import {PrivateRoute} from './utilities/privateRoute'
@@ -30,7 +31,7 @@ class App extends Component {
             <Route extact path="/search" component={SearchBar}/>
             <PrivateRoute exact path="/user" component={User} />
             <PrivateRoute exact path="/newpost" component={NewNotes} />
-            <PrivateRoute exact path="/viewnote/:id" component={ViewNote} />
+            <PrivateRoute exact path="/viewnote/:id" component={RenderNote} />
           </Switch>
         </div>
 
