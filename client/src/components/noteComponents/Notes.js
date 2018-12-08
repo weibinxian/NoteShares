@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Notes extends Component {
     
     render() {
-            let test1 = '/viewnote/' + '7';
+            let test1 = "/viewnote/" + "7";
         return(
             
 
