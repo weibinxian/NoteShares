@@ -14,8 +14,11 @@ module.exports = (sequelize, DataTypes) => {
             },
         },
         body: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(3000),
         allowNull: false,
+        // get() {
+        //     return this.getDataValue('body').toString('utf8'); // or whatever encoding is right
+        //   },
         validate: {
             notEmpty: true,
             },

@@ -15,12 +15,40 @@ router.get('/note/:id', (req,res)=> {
     });
 });
 
-//@route    GET api/note if
-//@desc     Get the note from database by ID
-router.get('/keyword/', (req,res)=> {
 
-    console.log(req.query)
-    res.json('hi')
+
+//@route            GET api/search
+//@para/:val        what attribute to search
+//@query/keywords   keywords to search using 'like'   
+//@desc             Get the note from database by ID
+router.get('/search/:val/keywords/', (req,res)=> {
+
+    //parse url and get what to attribute to search in note
+    let searchVal = req.url.split('/')
+    searchVal = searchVal[2]
+
+    //create a query of keywords to search in note attribute 
+    let keywordsQuery = req.query 
+    let query = []
+
+    for (let key in keywordsQuery) {
+        query.push({ $iLike: '%' + keywordsQuery[key] + '%' })
+    }
+    let qry = {
+        where: {
+            [searchVal]: { $or: query }
+        }
+    }
+
+    //return all unique notes found 
+    models.Note.findAll(qry)
+    .then ( responce => {
+        res.json(responce)
+    })
+    .catch(err => {
+        console.log('---error----')
+        console.log(err)
+    })
 
 });
 
