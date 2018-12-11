@@ -51,7 +51,14 @@ export const createnewnote = newNote => {
          image : newNote.image,
     });
 }
+export const newcom = newComment => {
+    return axios
+    .post('http://localhost:3001/api/comments', {
+       
+       body : newComment.body,
 
+  });
+}
 /*
     NOTE FUNCTION
     GET reqest to api, to get note id 
