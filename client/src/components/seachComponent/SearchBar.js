@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {searchKeywords} from '../searchFunction'
 
 
-
+//display function to display the notes that were found
 function Display(props) {
 
     const note = props.note
@@ -31,7 +31,7 @@ class SearchBar extends Component {
         }
     }
 
-   
+    //change value for what part to search to in notes 
     onChangeValue(e) {
         let searchValue = e.target.value;
         this.setState({ searchValue});
@@ -84,43 +84,55 @@ class SearchBar extends Component {
 
         //message
         let message = <h1>Search in notes</h1>
+        let numberFound = this.state.queryResult.length
+
         if(this.state.callBackResponce){
             if(this.state.queryResult.length === 0){
-                message = <h1>No Results</h1>
+                message = <h1>Found no results</h1>
             }else {
-                message = <h1></h1>
+                message = <h3>Number of notes found: {numberFound}</h3>
             }
         }
 
         return(
             <div>
-            <form onSubmit={(e) => this.onSubmit(e)}>
-            <div className="form">
-            <div className="form-row align-items-center">
-                <div className="col-auto">
-                    <input className="form-control"
-                            onChange = { (e) => this.onChange(e) }
-                            required></input>
+                <div className="row justify-content-center">
+                <div className="col-md-6 col-sm-12 col-xs-12">
+                    <form onSubmit={(e) => this.onSubmit(e)}>
+                    <div className="form">
+                    <div className="form-row align-items-center">
+                        <div className="col-auto">
+                            <input className="form-control"
+                                    onChange = { (e) => this.onChange(e) }
+                                    required></input>
+                        </div>
+
+                        <div className="col-auto">
+                            <select className="custom-select my-1 mr-sm-2" value={this.state.searchValue} onChange = { (e) => this.onChangeValue(e)}>
+                            <option value="title">title</option>
+                            <option value="body">body</option>
+
+                            </select>
+                        </div>
+
+                        <div className="col-auto">
+                            <button className="btn btn-primary"
+                                    type="submit">search
+                            </button>
+                        </div>
+                    </div>
+                    </div>
+                    </form>
+                </div>
                 </div>
 
-                <div className="col-auto">
-                    <select value={this.state.searchValue} onChange = { (e) => this.onChangeValue(e)}>
-                    <option value="title">title</option>
-                    <option value="body">body</option>
-
-                    </select>
+                <div className="row justify-content-center">
+                <div className="col-md-6 col-sm-12 col-xs-12">
+                        {results}
+                        <br></br>
+                        {message}
                 </div>
-
-                <div className="col-auto">
-                    <button className="btn btn-primary"
-                            type="submit">search
-                    </button>
                 </div>
-            </div>
-            </div>
-            </form>
-            {results}
-            {message}
         </div>
             
         )

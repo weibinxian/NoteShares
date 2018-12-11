@@ -118,7 +118,7 @@ class NewNote extends Component {
                            required
                            ></textarea>
     
-                    <label>text</label>
+                    <label>keywords(optional)</label>
                     <textarea name="text" 
                            className="form-control" 
                            id="text" 
@@ -126,10 +126,13 @@ class NewNote extends Component {
                            onChange = { (e) => this.onChange(e)}
                            required
                           ></textarea>
-                    
+                    <br></br>
+
+                    <div className="row justify-content-center">
                     <Images callbackFromParent={this.imageCallback}/>
+                    </div>
                     
-                </div>
+                </div >
                     <button type="submit" className="btn btn-primary">Create Note</button>
                 </form>
                 </div>
