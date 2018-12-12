@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {newcom} from '../userFunctions'
+//import {newcom} from '../userFunctions'
 
 class Comment extends Component{
     constructor(props){
@@ -17,7 +17,7 @@ class Comment extends Component{
     onSubmit(e) {
         e.preventDefault();
         //post fetch
-        newcom(this.state.body);
+       // newcom(this.state.body);
 
     }
     render(){

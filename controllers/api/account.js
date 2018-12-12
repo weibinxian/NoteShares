@@ -26,6 +26,7 @@ router.post('/signin',
       firstName: req.user.firstName,
       lastName: req.user.lastName,
       email: req.user.email,
+      username: req.user.username,
     });
   });
 

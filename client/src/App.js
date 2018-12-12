@@ -21,11 +21,11 @@ import {PrivateRoute} from './utilities/privateRoute'
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        <NavBar/> 
-        <div className="Test">   
+        <div className=""> 
+        <NavBar/>  
           <Switch >
             <Route exact path="/" component={Home} />
+  
             <Route exact path="/notes" component={Notes}/>
             <Route exact path="/login" component={Login}/>
             <Route extact path="/signup" component={SignUp}/>
@@ -35,9 +35,11 @@ class App extends Component {
             <PrivateRoute exact path="/newpost" component={NewNotes} />
             <PrivateRoute exact path="/viewnote/:id" component={RenderNote} />
           </Switch>
+         
+          <footer className="w3-bottom w3-black w3-center">
+          <p>CAUSEnotes &copy; 2018 All Rights Reserved</p>
+          </footer>
         </div>
-
-      </div>
 
     );
   }

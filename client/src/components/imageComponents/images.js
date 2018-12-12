@@ -55,17 +55,22 @@ class Images extends Component{
             this.props.callbackFromParent(state)
             console.log('image upload cb')
         });
-      }
+    }
+
 
     render(){
-        return(
+        return(<div>
             <Dropzone 
+                className="images w3-outline"
                 onDrop={this.handleDrop} 
                 multiple 
                 accept="image/*" 
             >
             <p>Drop your files or click here to upload</p>
             </Dropzone>
+            <div>
+            </div>
+        </div>
         );
 
     }

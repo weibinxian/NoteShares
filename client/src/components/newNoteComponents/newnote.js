@@ -46,12 +46,6 @@ class NewNote extends Component {
         e.preventDefault();
 
         console.log(this.state)
-        /*
-        if imagescb 
-            var = this.state.upload.imageURL
-        else 
-            var=[]
-        */
 
         const imagesCB = this.state.upload.imageCB;
     
@@ -83,7 +77,13 @@ class NewNote extends Component {
      
     }
 
-
+    clear(e){
+        e.preventDefault()
+        this.setState({upload: {
+            imageCB: false,
+            imageURL: [],
+        }})
+    }
     render () {
        
         const { callBackResponce } = this.state;
@@ -94,44 +94,61 @@ class NewNote extends Component {
             return <Redirect to="/notes" />;
 
         } else {
+ 
+            let imagesInfo;
+            if(this.state.upload.imageCB){
+                if(this.state.upload.imageURL.length !== 0){
+                    imagesInfo = <div>
+                    <p>Images uploaded {this.state.upload.imageURL.length}</p>
+                    <button className="w3-btn" onClick={(e) => this.clear(e)} >clear</button>
+                </div>
+                } else {
+                    imagesInfo = <div></div>
+                }
+            }
             return(
-                <div className="row justify-content-center">
-                <div className="col-md-6 col-sm-12 col-xs-12">
-                <form name="login" onSubmit={ (e) => this.onSubmit(e)}>
-                <div className="form-group">
+                <div id="user-panel" className="w3-container w3-padding-64 w3-display-topmiddle">
+                <div  className="w3-container">
+                <div className="w3-card-4">
+                <form className="w3-container w3-center" name="login" onSubmit={ (e) => this.onSubmit(e)}>
+                <div className="">
                     
                     <label>Name your title</label>
                     <input name="title" 
-                           className="form-control" 
+                           className="w3-input"
                            id="title" 
                            type="text"
                            onChange = { (e) => this.onChange(e) }
                            required
                            ></input>
-    
+
                     <label>Body</label>
                     <textarea name="body" 
-                           className="form-control" 
+                           className="w3-input"
                            id="body" 
                            type="text"
                            onChange = { (e) => this.onChange(e)}
                            required
                            ></textarea>
-    
-                    <label>text</label>
+                    <br></br>
+                    <label>keywords(optional)</label>
                     <textarea name="text" 
-                           className="form-control" 
+                           className="w3-input"
                            id="text" 
                            type="txt"
                            onChange = { (e) => this.onChange(e)}
                            required
                           ></textarea>
-                    
+                    <br></br>
+
+                    <div >
                     <Images callbackFromParent={this.imageCallback}/>
-                    
-                </div>
-                    <button type="submit" className="btn btn-primary">Create Note</button>
+                    </div>
+                    {imagesInfo}
+                </div >
+                    <button type="submit" className="">Create Note</button>
                 </form>
+                </div>
                 </div>
                 </div>
     

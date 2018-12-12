@@ -5,20 +5,17 @@ import { Link } from 'react-router-dom';
 class Notes extends Component {
     
     render() {
-            let test1 = '/viewnote/' + '7';
         return(
             
 
-            <div className="home-page">
-                <h1><Link to="/newpost">Create your post</Link></h1>
-                <h1><Link to={test1}>test</Link></h1>
+            <div id="user-panel" className="w3-container w3-padding-64 w3-display-topmiddle">
+            <div className="w3-animate-top">
+                <h1><Link to="/newpost">Create a new note</Link></h1>
+                <h1><Link to="/search">Search notes</Link></h1>
                 <h1 className="main-page, display-4">This is the Note page</h1>
-                <h1 className="main-page, display-4">Includes the categories</h1>
-                <h1 className="main-page, display-4">Search</h1>
-                <h1 className="main-page, display-4">Comments</h1>
                 
             </div>  
-           
+            </div>
         );
     }
 }

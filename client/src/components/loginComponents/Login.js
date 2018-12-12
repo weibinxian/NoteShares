@@ -64,34 +64,36 @@ class Login extends Component{
             return <Redirect to="/user" />;
         } else {
             return(
-                <div className="row justify-content-center">
-                 <div className="col-md-6 col-sm-12 col-xs-12">
+                 <div className="w3-container w3-display-middle">
+                 <div className="w3-card-4">
+                 <div className="w3-container w3-blue">
+                    <br></br>
+                </div>
                  <Error message={error} />
-                <form name="login" onSubmit={ (e) => this.onSubmit(e)} className="p-t-2">
-                    
-                    <div className="form-group">
+                    <form className="w3-container w3-center" name="login" onSubmit={ (e) => this.onSubmit(e)}>
+                    <div className="">
                         <label>Email Address</label>
                         <input name="email" 
-                               className="form-control" 
+                               className="w3-input" 
                                type="email" 
                                placeholder="Enter email"
                                onChange = { (e) => this.onChange(e)}>
                         </input>
                     </div>
     
-                    <div className="form-group">
+                    <div className="">
                         <label>Password</label>
                         <input name="password" 
-                               className="form-control" 
+                               className="w3-input" 
                                type="password" 
                                placeholder="Password"
                                onChange = { (e) => this.onChange(e)}>
                         </input>
                     </div>
-                    <button type="submit" className="btn btn-primary">Log In</button>
+                    <button type="submit" className="w3-btn w3-text-white">Sign In</button>
                 </form>
-                 </div>
                 </div>
+                 </div>
             );
         }
     }

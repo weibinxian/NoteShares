@@ -38,7 +38,7 @@ class ViewNote extends Component {
        
         return (
             <div>
-                DISPLAY NOTE <h1>{}</h1>
+                DISPLAY NOTE 
             </div>
         );
     }

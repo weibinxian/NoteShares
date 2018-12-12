@@ -1,85 +1,70 @@
 import React, {Component} from 'react';
-
-import { getNoteByID, getAllNotes} from '../userFunctions'
-
 import { Link } from 'react-router-dom';
 
-function Display(props) {
-        let noteID = props.id;
-        let noteURL = "/viewnote/" + noteID
-    return (
-        <div>
-            <h1><Link to={noteURL}>link</Link></h1>
-            <h1>{props.title}</h1>
-            <h1>{props.body}</h1>
-            <h1>{props.text}</h1>
-            <h1>{props.id}</h1>
+import { getAllNotes } from '../userFunctions'
 
+function Display(props) {
+
+    const note = props.note
+    const noteURL = "/viewnote/" + note.id
+    let date =  note.updatedAt.substr(0,10);
+    console.log(note)
+    return (
+        <div className="w3-card-4">
+            <h1>Title: <Link to={noteURL}>{note.title}</Link></h1>
+            <p>last update: {date}</p>
+        
         </div>
     )
 }
 
-
-
-class ViewNote extends Component {
+class ViewUserNotes extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            notes: []
+            notes: [],
+            callbackResponce: false,
         }
     }
 
-    componentWillMount(){
-        console.log('------')
-        if(this.props.match) {
-            let _id = this.props.match.params.id
-
-            getNoteByID(_id)
-            .then(note => {
-
-                console.log(note.data)
-                this.setState({
-                    notes:note.data
-                })
-            })
-        }  else if (this.props.findAll){
-            let _id = this.props.findAll
+    componentDidMount(){
+            //get the notes from the user ID passed through props
+            let _id = this.props.findAllByID
             getAllNotes(_id)
             .then(notes => {
-                console.log(notes.data)
-                this.setState({notes:notes.data})
+                let noteArray = notes.data;
+                this.setState({notes: noteArray,
+                               callbackResponce: true})
             })
             .catch(err => {
                 console.log(err)
             })
-        }
+
     }
 
 
     render(){
-        console.log('inside render')
-        console.log(this.state.notes)
-       let notelist=[];
-       
-       for(let i =0; i<this.state.notes.length;i++){
-           let item = this.state.notes[i];
+        if(this.state.callbackResponce){
 
-           notelist.push(
-               <Display  title ={item.title}
-                        body ={item.body}
-                        text = {item.text}
-                        id = {item.id}
-               />
-           );
-       }
+            const notes = this.state.notes.map( note => {
+                return(       
+                    <Display key={note.id} note={note} />    
+                );
+            })
+     
+            return (
+
+                <div className="w3-container w3-center">{notes}</div>
+
+            );
+        }
        
         return (
             <div>
-                DISPLAY NOTE <h1> {notelist}</h1>
-                
+                LOADING NOTESSSS
             </div>
         );
     }
 }
-export default ViewNote;
+export default ViewUserNotes;
