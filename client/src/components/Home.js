@@ -27,7 +27,7 @@ class Home extends Component {
 		            <div className="w3-text-shadow w3-animate-opacity">{logStatus}</div>
                     <hr></hr>
                     <h4 className="w3-animate-opacity">
-                    Welcome to CAUSEnotes, a one stop shop for CUNY students to view, download, and upload notes, for free. 
+                    Welcome to noteShare, a one stop shop for CUNY students to freely share and view notes among students, for free. 
                     </h4>
                     </div>
                 </section>
