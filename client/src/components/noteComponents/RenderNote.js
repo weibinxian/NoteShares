@@ -39,20 +39,25 @@ class RenderNote extends Component {
             console.log(this.state.note)
         }
 
-         let _username=Auth.getlocal('email')
+         let _username=Auth.getlocal('username')
        
    
 
         return (
-            <div>This notes created by email {_username}
-
-                <div>
-                    <Comment />
-
-                    
+            <div id="user-panel" className="w3-container w3-padding-64 w3-display-topmiddle">
+            <div className="w3-animate-top">
+                <div id="bottom-section" className="w3-panel w3-border w3-light-grey w3-round-large">
+                  <h1>This notes created by {_username} </h1>
                 </div>
+                <Comment />
+          
             </div>
+            </div>
+                    
+         
             
+
+                
         );
     }
     

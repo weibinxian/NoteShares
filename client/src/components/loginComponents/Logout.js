@@ -14,7 +14,7 @@ const LogOut = () => {
     if (Auth.getlocal('id')){
         return (
             <button type="button" 
-                    className="btn btn-secondary" 
+                    className="w3-button w3-round w3-hover-red" 
                     onClick={clearLocalStorage}>
                     Sign Out
                     </button>

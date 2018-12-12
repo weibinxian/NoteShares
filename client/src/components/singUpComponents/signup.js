@@ -117,28 +117,30 @@ class SignUp extends Component {
 
         } else {
             return(
-                <div className="row justify-content-center">
-                <div className="col-md-6 col-sm-12 col-xs-12">
+                <div className="w3-container w3-display-middle">
+                <div className="w3-card-4">
+                <div className="w3-container w3-blue">
+                    <br></br>
+                </div>
                 <Error message={error}/>
-                <form name="register" onSubmit={ (e) => this.onSubmit(e)}>
-                <div className="form-group">
+                <form className="w3-container w3-center" name="register" onSubmit={ (e) => this.onSubmit(e)}>
+                <div className="">
                     <label>Enter name</label>
-                    <div className="form-row">
-                        <div className="col">
+                    <div className="">
+                        <div className="">
                         <input name="fname" 
                                type="text" 
-                               id="validationTooltip01"
-                               className="form-control"
+                               className="w3-input"
                                placeholder="First name"
                                required
                                onChange = { (e) => this.onChange(e)}
                                 ></input>
     
                         </div>
-                        <div className="col">
+                        <div className="">
                         <input  name="lname" 
                                 type="text" 
-                                className="form-control" 
+                                className="w3-input" 
                                 placeholder="Last name"
                                 required
                                 onChange = { (e) => this.onChange(e)}
@@ -148,7 +150,7 @@ class SignUp extends Component {
                     </div>
                     <label>Enter a username</label>
                     <input name="username" 
-                           className="form-control" 
+                           className="w3-input" 
                            id="username" 
                            type="text"
                            required
@@ -157,7 +159,7 @@ class SignUp extends Component {
     
                     <label>Enter school</label>
                     <input name="school" 
-                           className="form-control" 
+                           className="w3-input" 
                            id="school" 
                            type="text"
                            required
@@ -166,7 +168,7 @@ class SignUp extends Component {
     
                     <label>Enter CUNY email</label>
                     <input name="email" 
-                           className="form-control" 
+                           className="w3-input" 
                            id="email" 
                            type="email"
                            required 
@@ -176,7 +178,7 @@ class SignUp extends Component {
     
                     <label>Password</label>
                     <input name="password" 
-                           className="form-control" 
+                           className="w3-input" 
                            id="password" 
                            type="password"
                            required
@@ -185,7 +187,7 @@ class SignUp extends Component {
     
                     <label>Repeat Password</label>
                     <input name="password2" 
-                           className="form-control" 
+                           className="w3-input" 
                            id="password2" 
                            required
                            type="password"

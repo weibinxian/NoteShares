@@ -7,11 +7,12 @@ function Display(props) {
 
     const note = props.note
     const noteURL = "/viewnote/" + note.id
-
+    let date =  note.updatedAt.substr(0,10);
+    console.log(note)
     return (
-        <div>
-            <h1><Link to={noteURL}>link</Link></h1>
-            <h1>{note.title}</h1>
+        <div className="w3-card-4">
+            <h1>Title: <Link to={noteURL}>{note.title}</Link></h1>
+            <p>last update: {date}</p>
         
         </div>
     )
@@ -54,9 +55,7 @@ class ViewUserNotes extends Component {
      
             return (
 
-                <div>{notes}</div>
-
-
+                <div className="w3-container w3-center">{notes}</div>
 
             );
         }

@@ -9,13 +9,12 @@ function Display(props) {
 
     const note = props.note
     const noteURL = "/viewnote/" + note.id
-
+    let date =  note.updatedAt.substr(0,10);
     return (
-        <div>
-            <h1><Link to={noteURL}>link</Link></h1>
-            <h1>{note.title}</h1>
-        
-        </div>
+        <div className="w3-card-4">
+        <h1>Title: <Link to={noteURL}>{note.title}</Link></h1>
+        <p>last update: {date}</p>
+      </div>
     )
 }
 
@@ -95,28 +94,29 @@ class SearchBar extends Component {
         }
 
         return(
-            <div>
-                <div className="row justify-content-center">
-                <div className="col-md-6 col-sm-12 col-xs-12">
-                    <form onSubmit={(e) => this.onSubmit(e)}>
-                    <div className="form">
-                    <div className="form-row align-items-center">
-                        <div className="col-auto">
-                            <input className="form-control"
+            <div className="w3-container">
+                <div  id="user-panel" className="w3-container w3-block w3-padding-64 w3-display-topmiddle">
+                <div className="">
+                    <form className="" onSubmit={(e) => this.onSubmit(e)}>
+                    <div className="">
+                    <div className="w3-row-padding">
+                        <div className="">
+                            <input className="w3-input w3-third w3-border"
                                     onChange = { (e) => this.onChange(e) }
                                     required></input>
                         </div>
 
-                        <div className="col-auto">
-                            <select className="custom-select my-1 mr-sm-2" value={this.state.searchValue} onChange = { (e) => this.onChangeValue(e)}>
+                        <div className="w3-third  w3-dropdown-hover">
+                            <select className="" value={this.state.searchValue} onChange = { (e) => this.onChangeValue(e)}>
                             <option value="title">title</option>
                             <option value="body">body</option>
 
                             </select>
                         </div>
 
-                        <div className="col-auto">
-                            <button className="btn btn-primary"
+                        <div className="w3-third">
+
+                            <button className="w3-btn w3-white w3-border-blue w3-round"
                                     type="submit">search
                             </button>
                         </div>
@@ -124,17 +124,17 @@ class SearchBar extends Component {
                     </div>
                     </form>
                 </div>
+
+                <div  id="bottom-section" className="w3-panel w3-border w3-margin-64 w3-light-grey w3-round-large">
+                 <div className="w3-container ">
+                         {results}
+                         <br></br>
+                        {message}
+                 </div>
+                 </div>
                 </div>
 
-                <div className="row justify-content-center">
-                <div className="col-md-6 col-sm-12 col-xs-12">
-                        {results}
-                        <br></br>
-                        {message}
-                </div>
-                </div>
-        </div>
-            
+                 </div>
         )
 
     }

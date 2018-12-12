@@ -45,17 +45,24 @@ class User extends Component {
     render() {
         
         if(this.state.callbackResponce){
+            let name = this.state.name
+
             return(
-                <div className="row justify-content-center">
-                <div className="col-md-6 col-sm-12 col-xs-12">
-                    <div>
-                    <h2 className="display-4 center"> This is User profile </h2>
-                    <h2><Link to="/newpost">Create a new note</Link></h2> 
-                    <br></br>
-                    <h1>Note by {this.state.name}</h1>
-                    <br></br>
-                    <ViewUserNote findAllByID={this.state.id} />    
+                <div id="user-panel" className="w3-container w3-padding-64 w3-display-topmiddle">
+                <div className="w3-animate-top">
+                  <div className="w3-container w3-block ">
+                        <h2><Link className="w3-button w3-display-topmiddle w3-round w3-hover-light-blue" to="/newpost">Create a new note</Link></h2> 
                     </div>
+                    
+                    <div id="bottom-section" className="w3-panel w3-border w3-light-grey w3-round-large">
+                  
+                    <h2 className="display-4 center"> {name}'s profile </h2>
+                    <br></br>
+                    <h1>Notes by {this.state.name}</h1>
+                    <br></br>
+                    <ViewUserNote findAllByID={this.state.id} />
+                    </div>
+            
                 </div>
                 </div>
             )
