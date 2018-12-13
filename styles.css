@@ -1,0 +1,141 @@
+body {
+	background-color: #90A4AE;
+}
+/*
+-------------------------------
+*/
+
+.moveright{
+	color: red;
+	float: right;
+}
+
+/*
+-------------------------------
+*/
+/*Nav bar css*/
+.logo, .links {
+    display: inline-block;
+}
+
+.links {
+    float:right;
+}
+
+/*Nav bar css*/
+.home-page {
+    text-align: center;
+}
+
+.branding{
+	font-size: 17px;
+}
+
+.showcase{
+	background:url('./showcase.jpg') no-repeat;
+	background-position: center;
+	height: 100vh;
+	color:#fff;
+}
+.showcase1{
+	background:url('./study4.jpeg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	padding: 100px 0 100px;
+	background-size: cover;
+	color:#fff;
+}
+
+.showcase h1{
+	font-size: 40px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.wordsforbutton{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 48px;
+	
+	color: rgb(27, 23, 23);
+}
+.words{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 48px;
+	margin-left: 40px;
+	margin-bottom: 20px;
+	color: black;
+}
+.readmore{
+	margin-bottom: 10px;
+}
+.showcase hr{
+	width: 100px;
+	margin:auto;
+	border-width: 3px;
+	border-color: teal;
+}
+
+.showcase p{
+	font-size: 16px;
+	padding-bottom: 20px;
+}
+
+.section {
+	padding: 40px 0;
+}
+
+.section h2{
+	padding: 0;
+	margin: 0;
+}
+
+.section .fa {
+	font-size: 50px;
+}
+
+.section img {
+	width: 100%;
+}
+/*
+user 
+*/
+#user-panel {
+	width: 85%;
+}
+#user-panel1{
+	width: 100%;
+}
+#bottom-section {
+	margin-top: 100px;
+}
+#bottom-section1{
+	margin-top: 10px;
+}
+/*
+note 
+*/
+#title {
+	width: 50%;
+	margin: auto ;
+	background-color: #ECEFF1;
+}
+
+#body, #text {
+	width: 80%;
+	margin: auto ;
+	background-color: #ECEFF1;
+}
+
+.images {
+	margin: auto;
+	padding: 20px;
+}
+@media only screen and (max-width: 600px){
+	body{
+		margin-top: 190px;
+	}
+
+	.showcase{
+		height: 400px;
+		padding: 60px 0;
+	}
+}
